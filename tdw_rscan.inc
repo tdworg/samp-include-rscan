@@ -43,10 +43,17 @@
 #include "amx\disasm"
 #include "amx\frame_info"
 
-#define addressofex(%1) (RScan_GetNextCallAddress_()?(((%1),TDW_g_sCallAddressRet_)?1:2):(TDW_g_sCallAddressRet_))
+#if !defined addressofex
+	#define addressofex(%1) (RScan_GetNextCallAddress_()?(((%1),TDW_g_sCallAddressRet_)?1:2):(TDW_g_sCallAddressRet_))
+#endif
+
+#if !defined RSCAN_MAX_NESTED_LEVEL
+	#define RSCAN_MAX_NESTED_LEVEL (32)
+#else
+	#assert (0 < RSCAN_MAX_NESTED_LEVEL < 128)
+#endif
 
 const
-	RSCAN_MAX_NESTED_LEVEL = 32,
 	RSCAN_MAX_FUNC_NAME    = 32,
 	RSCAN_STATE_SKIP_FUNC  = 1;
 
