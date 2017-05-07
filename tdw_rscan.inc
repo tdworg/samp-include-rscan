@@ -5,7 +5,7 @@
 	A library for detecting recursions.
 
 | Version:
-	1.0.0
+	1.1.0
 
 | Dependencies:
 	- AMX Assembly (https://github.com/Zeex/amx_assembly)
