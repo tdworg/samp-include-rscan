@@ -44,7 +44,7 @@
 #include "amx\frame_info"
 
 #if !defined addressofex
-	#define addressofex(%1) (RScan_GetNextCallAddress_()?(((%1),TDW_g_sCallAddressRet_)?1:2):(TDW_g_sCallAddressRet_))
+	#define addressofex(%1) (RScan_GetNextCallAddress_()?(((%1),TDW_gRscan@CallAddressRet_)?1:2):(TDW_gRscan@CallAddressRet_))
 #endif
 
 #if !defined RSCAN_MAX_NESTED_LEVEL
@@ -67,7 +67,7 @@ static stock
 	TDW_g_sMessage[(sizeof TDW_g_sMessageSeparator + RSCAN_MAX_FUNC_NAME) * RSCAN_MAX_NESTED_LEVEL + RSCAN_MAX_FUNC_NAME];
 
 stock
-	TDW_g_sCallAddressRet_;
+	TDW_gRscan@CallAddressRet_;
 
 
 stock RScan_GetNextCallAddress_()
@@ -77,7 +77,7 @@ stock RScan_GetNextCallAddress_()
 	DisasmInit(dctx, GetCurrentFrameReturn());
 	while (DisasmNext(dctx)) {
 		if (DisasmGetOpcode(dctx) == OP_CALL) {
-			TDW_g_sCallAddressRet_ = DisasmGetOperandReloc(dctx);
+			TDW_gRscan@CallAddressRet_ = DisasmGetOperandReloc(dctx);
 			return false;
 		}
 	}
