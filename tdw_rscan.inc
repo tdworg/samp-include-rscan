@@ -10,6 +10,9 @@
 | Dependencies:
 	- AMX Assembly (https://github.com/Zeex/amx_assembly)
 
+| Compatible with the JIT plugin:
+	No
+
 | License:
 	Copyright (c) 2017 Double V
 
@@ -158,6 +161,7 @@ static stock RScan_NextCallAddress(dctx[DisasmContext], &ret_addr, &func)
 				func = DisasmGetCurIp(dctx) - TDW_g_sHdr[AMX_HDR_COD] + TDW_g_sHdr[AMX_HDR_DAT];
 			}
 			case OP_CALL: {
+				printf("%d", DisasmGetOpcode(dctx));
 				ret_addr = DisasmGetOperandReloc(dctx);
 				return true;
 			}
