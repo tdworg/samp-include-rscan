@@ -72,7 +72,6 @@ static stock
 stock
 	TDW_gRscan@CallAddressRet_;
 
-
 stock RScan_GetNextCallAddress_()
 {
 	new
@@ -161,7 +160,6 @@ static stock RScan_NextCallAddress(dctx[DisasmContext], &ret_addr, &func)
 				func = DisasmGetCurIp(dctx) - TDW_g_sHdr[AMX_HDR_COD] + TDW_g_sHdr[AMX_HDR_DAT];
 			}
 			case OP_CALL: {
-				printf("%d", DisasmGetOpcode(dctx));
 				ret_addr = DisasmGetOperandReloc(dctx);
 				return true;
 			}
